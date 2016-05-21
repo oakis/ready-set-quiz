@@ -1,0 +1,31 @@
+<ion-view title="login" id="login">
+  <ion-content ng-hide="loggedIn">
+  	<h4>Inloggning</h4>
+    <div class="card">
+      <ion-item>
+        <button class="facebook-sign-in button button-block" ng-click="facebookSignIn()">Logga in med Facebook</button>
+      </ion-item>
+    	<div class="list">
+			  <label class="item item-input">
+			    <span class="input-label text-left">Användarnamn</span>
+			    <input type="text" ng-model="username">
+			  </label>
+			  <label class="item item-input">
+			    <span class="input-label text-left">Lösenord</span>
+			    <input type="password" ng-model="password">
+			  </label>
+			</div>
+    </div>
+    <div class="padding-horizontal">
+    	<button class="button button-block button-balanced" ng-click="login(username,password)">Logga in</button>
+    </div>
+  </ion-content>
+  <ion-content ng-show="loggedIn">
+  	<h4>Inloggning</h4>
+    <div class="card">
+    	<div class="list">
+    		Du är redan inloggad som {{username}}. <a ui-sref="logout">Logga ut?</a>
+			</div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,20 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.ionicframework.ionicgame793766"
+        },
+        "phonegap-facebook-plugin": {
+            "APP_ID": "269987140017608",
+            "APP_NAME": "Ready, Set, Quiz",
+            "PACKAGE_NAME": "com.oakis.ready_set_quiz"
+        }
+    },
+    "dependent_plugins": {}
+}

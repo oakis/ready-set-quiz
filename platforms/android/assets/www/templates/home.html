@@ -1,0 +1,26 @@
+<ion-view title="home" id="home">
+  <ion-content ng-hide="loggedIn">
+  	<h4>Hem</h4>
+    <div class="card">
+  		<ion-item>
+  			<p>Redan användare?</p>
+  			<button class="button button-positive" ui-sref="login">Logga in</button>
+  		</ion-item>
+  		<ion-item>
+  			<p>Ny användare?</p>
+  			<button class="button button-assertive" ui-sref="register">Registrera</button>
+  		</ion-item>
+    </div>
+  </ion-content>
+  <ion-content ng-show="loggedIn">
+  	<h4>Hem</h4>
+    <div class="card">
+  		<ion-item>
+  			Du är inloggad som användare {{username}}.
+  		</ion-item>
+  		<ion-item>
+  			<button class="button button-assertive" ng-click="logout()">Logga ut</button>
+  		</ion-item>
+    </div>
+  </ion-content>
+</ion-view>
