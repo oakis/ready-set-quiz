@@ -1,0 +1,58 @@
+<ion-view title="Administrera" id="admin">
+  <ion-content>
+    <div class="card">
+      <ion-item>
+        <h2>Acceptera frågor</h2>
+        <ion-item ng-if="notAccepted <= 0">Inga frågor att acceptera.</ion-item>
+      	<div class="list" ng-repeat="item in notAccepted track by $index">
+  			  <div class="card">
+            <ion-item class="item-text-wrap">
+              Fråga: <span ng-hide="item.editing">{{item.question}}</span>
+              <input type="text" value="{{item.question}}" ng-show="item.editing" ng-model="data.question">
+            </ion-item>
+            <ion-item>
+              Svar: <span ng-hide="item.editing">{{item.answer}}</span>
+              <input type="text" value="{{item.answer}}" ng-show="item.editing" ng-model="data.answer">
+            </ion-item>
+            <ion-item ng-repeat="choice in item.choices | limitTo: 3 track by $index">
+              Alternativ {{$index+1}}: <span ng-hide="item.editing">{{choice}}</span>
+              <input type="text" value="{{choice}}" ng-show="item.editing" ng-model="data.choices[$index]">
+            </ion-item>
+            <ion-item ng-hide="item.editing">
+              <a class="icon balanced ion-checkmark-round icon-large" ng-click="accept($index)"> </a>
+              <a class="icon positive ion-edit icon-large" ng-click="edit($index)"> </a>
+              <a class="icon assertive ion-trash-a icon-large" ng-click="delete($index)"> </a>
+            </ion-item>
+            <ion-item ng-show="item.editing">
+              <button class="button button-balanced" ng-click="save($index)">Spara</button>
+            </ion-item>
+          </div>
+  			</div>
+      </ion-item>
+    </div>
+    <div class="card">
+      <ion-item>
+        <h2>Administrera roller</h2>
+        <div class="list" ng-repeat="user in adminRoles">
+          <div class="card">
+            <ion-item>
+              Användarnamn: {{user.username}}
+            </ion-item>
+            <ion-item>
+              Byt roll: {{user.role}}
+              <select ng-model="user.role">
+                <option value="admin">admin</option>
+                <option value="trusted">trusted</option>
+                <option value="user">user</option>
+              </select>
+              <!--<input type="text" ng-model="user.role">-->
+            </ion-item>
+            <ion-item>
+              <button class="button button-balanced" ng-click="updateRole($index,user.role)">Spara</button>
+            </ion-item>
+          </div>
+        </div>
+      </ion-item>
+    </div>
+  </ion-content>
+</ion-view>

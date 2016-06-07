@@ -1,0 +1,42 @@
+<ion-view title="Lägg till en fråga" id="profile.addQuestion">
+  <ion-content>
+    <div class="card">
+      <ion-item class="item-text-wrap text-left">
+        <p>Skriv en fråga och avsluta med ett frågetecken(?). Fyll sedan i rätt svar, samt tre alternativ. Ingen av de tre alternativen ska vara samma som rätt svar.</p>
+      </ion-item>
+      <ion-item>
+      	<div class="list">
+  			  <label class="item item-input">
+  			    <span class="input-label text-left">Fråga</span>
+  			    <textarea ng-model="data.question" rows="4"></textarea>
+  			  </label>
+          <label class="item item-input">
+            <span class="input-label text-left">Svar</span>
+            <input type="text" ng-model="data.answer">
+          </label>
+          <label class="item item-input">
+            <span class="input-label text-left">Alternativ</span>
+            <input type="text" ng-model="data.choice1">
+          </label>
+          <label class="item item-input">
+            <span class="input-label text-left">Alternativ</span>
+            <input type="text" ng-model="data.choice2">
+          </label>
+          <label class="item item-input">
+            <span class="input-label text-left">Alternativ</span>
+            <input type="text" ng-model="data.choice3">
+          </label>
+          <!--<label class="item item-input">
+            <span class="input-label text-left">Kategori</span>
+            <select ng-model="data.category">
+              <option>Kategori</option>
+            </select>
+          </label>-->
+  			</div>
+      </ion-item>
+    </div>
+    <div class="padding-horizontal">
+    	<button class="button button-block button-balanced" ng-click="addQuestion()" ng-disabled="disable">Lägg till fråga</button>
+    </div>
+  </ion-content>
+</ion-view>

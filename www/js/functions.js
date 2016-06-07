@@ -1,7 +1,7 @@
 // Dev variables
 
-var serverUrl = 'http://localhost'; // dev
-//var serverUrl = 'http://37.139.10.122'; // live
+//var serverUrl = 'http://localhost'; // dev
+var serverUrl = 'http://37.139.10.122'; // live
 
 // Functions
 

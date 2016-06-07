@@ -1,0 +1,19 @@
+<ion-view title="Highscore" id="highscore">
+  <ion-content class="has-tabs-bottom">
+    <ion-refresher pulling-text="Dra ner för att uppdatera..." on-refresh="doRefresh()">
+    </ion-refresher>
+    <div class="list card">
+        <ion-item>
+            <canvas id="hsRank" class="chart chart-bar" chart-data="rankSum" chart-labels="rankUser" chart-legend="true" chart-series="rankSeries">
+            </canvas>
+        </ion-item>
+    	<ion-item>
+            <canvas id="hsPoints" class="chart chart-bar" chart-data="statsPoints" chart-labels="statsUser" chart-legend="true" chart-series="statsSeries">
+            </canvas>
+        </ion-item>
+        <ion-item>
+            <canvas id="hsQuestions" class="chart chart-bar" chart-data="qSum" chart-labels="qUser" chart-legend="true" chart-series="qSeries">
+            </canvas>
+        </ion-item>
+    </div>
+</ion-view>

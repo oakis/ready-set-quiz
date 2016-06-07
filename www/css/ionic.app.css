@@ -9838,3 +9838,26 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+/* Eget */
+.icon-large {
+  font-size: 24px; }
+
+.icon-small {
+  font-size: 12px !important; }
+
+.button.disabled, .button[disabled] {
+  opacity: 1; }
+
+.scroll {
+  text-align: center;
+  width: 100%; }
+
+.card .item.item-input textarea {
+  padding-right: 44px; }
+
+.polka:nth-child(even) {
+  background-color: #F9F1E5; }
+
+.polka:nth-child(odd) {
+  background-color: #FD6279; }

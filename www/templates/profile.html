@@ -1,18 +1,28 @@
-<ion-view title="profile" id="profile">
-  <ion-content ng-show="loggedIn">
+<ion-view title="Min Profil" id="profile">
+    <ion-nav-buttons side="right">
+      <button class="button icon ion-gear-a" ui-sref="tab.settings"></button>
+    </ion-nav-buttons>
+    <ion-content ng-show="loggedIn" class="has-tabs-bottom">
     <div class="list card">
     	<div class="item item-avatar">
-    	<img src="img/profile/default.png">
-    	<h2>{{userData.username}}</h2>
-    	<p>Total poäng: {{userData.totalPoints}}</p>
+        	<img src="img/profile/default.png">
+        	<h2>{{userData.username}}</h2>
+        	<p>Total poäng: {{userData.totalPoints}}</p>
     	</div>
     	<div class="list card">
-    		<div class="item text-left"><span class="ion-person-stalker"></span> Rank: </div>
-    		<div class="item text-left"><span class="ion-thumbsup"></span> Vinster: </div>
-    		<div class="item text-left"><span class="ion-thumbsdown"></span> Förluster: </div>
-    		<div class="item text-left"><span class="ion-bowtie"></span> Oavgjort: </div>
+    		<div class="item text-left"><span class="ion-arrow-graph-up-right"></span> Rank: {{rankPercent}}</div>
+            <div class="item text-left"><span class="ion-arrow-graph-up-left"></span> Rank antal rätt: {{rankCorrect}}</div>
+    		<div class="item text-left"><span class="ion-thumbsup"></span> Vinster: {{win}}</div>
+    		<div class="item text-left"><span class="ion-thumbsdown"></span> Förluster: {{loss}}</div>
+    		<div class="item text-left"><span class="ion-bowtie"></span> Oavgjort: {{tied}}</div>
     		<div class="item text-left"><span class="ion-ios-heart"></span> Bästa kategori: </div>
     	</div>
+        <ion-item>
+            <button class="button button-positive icon icon-left ion-plus-round" ui-sref="tab.addQuestion">Föreslå ny fråga</button>
+        </ion-item>
+        <ion-item ng-if="role === 'admin'">
+            <button class="button button-balanced icon icon-left ion-wrench" ui-sref="tab.admin">Administrera</button>
+        </ion-item>
     </div>
-  </ion-content>
+    </ion-content>
 </ion-view>

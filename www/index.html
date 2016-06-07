@@ -3,18 +3,25 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://localhost:35729">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src &apos;self&apos; &apos;unsafe-inline&apos;; script-src &apos;self&apos; &apos;unsafe-inline&apos; &apos;unsafe-eval&apos; http://localhost:35729 http://localhost:8080 http://37.139.10.122:8080">
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://localhost:35729 http://localhost:8080 http://37.139.10.122:8080">-->
     <title></title>
 
 
     <!-- compiled css output -->
     <link href="css/ionic.app.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="lib/angular-chart.js/dist/angular-chart.min.css" rel="stylesheet">
 
-    <!-- ionic/angularjs js -->
+    <!-- Weinre -->
+    <!--<script src="http://37.139.10.122:8080/target/target-script-min.js#anonymous"></script>-->
+
+    <!-- js packages -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
-
     <script src="lib/ngstorage/ngStorage.min.js"></script>
+    <script src="js/Chart.min.js"></script>
+    <script src="lib/angular-chart.js/dist/angular-chart.min.js"></script>
+    <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
+    <!--<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>-->
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -22,22 +29,17 @@
     <script src="js/app.js"></script>
     <script src="js/functions.js"></script>
     <script src="js/routes.js"></script>
-    <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>
+    <script src="js/controllers.js"></script>
 
 
   </head>
-  <body ng-app="starter">
-    <ion-pane>
-      <ion-header-bar class="bar-stable" align-title="center">
-        <h1 class="title"><span class="ion-ios-game-controller-b"></span> Ready, Set, Quiz</h1>
-      </ion-header-bar>
-      <ion-nav-view></ion-nav-view>
-      <ion-tabs class="tabs-positive tabs-icon-top">
-        <ion-tab title="Hem" icon-on="ion-home" icon-off="ion-home" ui-sref="home"></ion-tab>
-        <ion-tab title="Spela" icon-on="ion-ios-play" icon-off="ion-ios-play" ui-sref="question"></ion-tab>
-        <ion-tab title="Profil" icon-on="ion-ios-person" icon-off="ion-ios-person" ui-sref="profile"></ion-tab>
-      </ion-tabs>
-    </ion-pane>
+  <body ng-app="readySetQuiz">
+    <ion-nav-bar align-title="center" class="bar-stable">
+      <ion-nav-back-button class="icon ion-arrow-return-left">
+
+      </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-view></ion-nav-view>
   </body>
 </html>

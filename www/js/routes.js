@@ -1,34 +1,82 @@
 app.config(function($stateProvider,$urlRouterProvider) {
-  $urlRouterProvider.otherwise('/home');
   $stateProvider
-  .state('index', {
-    url: '/',
-    templateUrl: 'index.html',
-    controller: 'IndexCtrl'
+  .state('tab', {
+    url: "/tab",
+    abstract: true,
+    templateUrl: "templates/tabs.html"
   })
-  .state('question', {
+  .state('tab.home', {
+    url: '/home',
+    views: {
+      'tab-home': {
+        templateUrl: 'templates/home.html',
+        controller: 'HomeCtrl'
+      }
+    }
+  })
+  .state('tab.question', {
     url: '/question',
-    templateUrl: 'templates/question.html',
-    controller: 'QuestionCtrl'
+    views: {
+      'tab-question': {
+        templateUrl: 'templates/question.html',
+        controller: 'QuestionCtrl'
+      }
+    }
+  })
+  .state('tab.profile', {
+    url: '/profile',
+    views: {
+      'tab-profile': {
+        templateUrl: 'templates/profile.html',
+        controller: 'ProfileCtrl'
+      }
+    }
   })
   .state('login', {
     url: '/login',
     templateUrl: 'templates/login.html',
     controller: 'LoginCtrl'
   })
-  .state('profile', {
-    url: '/profile',
-    templateUrl: 'templates/profile.html',
-    controller: 'ProfileCtrl'
-  })
-  .state('home', {
-    url: '/home',
-    templateUrl: 'templates/home.html',
-    controller: 'HomeCtrl'
-  })
   .state('register', {
     url: '/register',
     templateUrl: 'templates/register.html',
     controller: 'RegCtrl'
+  })
+  .state('tab.highscore', {
+    url: '/highscore',
+    views: {
+      'tab-home': {
+        templateUrl: 'templates/highscore.html',
+        controller: 'HighscoreCtrl'
+      }
+    }
+  })
+  .state('tab.addQuestion', {
+    url: '/addquestion',
+    views: {
+      'tab-profile': {
+        templateUrl: 'templates/question.add.html',
+        controller: 'ProfileCtrl'
+      }
+    }
+  })
+  .state('tab.admin', {
+    url: '/admin',
+    views: {
+      'tab-profile': {
+        templateUrl: 'templates/admin.html',
+        controller: 'AdminCtrl'
+      }
+    }
+  })
+  .state('tab.settings', {
+    url: '/settings',
+    views: {
+      'tab-profile': {
+        templateUrl: 'templates/settings.html',
+        controller: 'SettingsCtrl'
+      }
+    }
   });
+  $urlRouterProvider.otherwise('/login');
 });

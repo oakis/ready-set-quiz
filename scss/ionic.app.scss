@@ -21,3 +21,36 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+/* Eget */
+
+$icon-size-large:									24px;
+$icon-size-small:									12px;
+
+.icon-large {
+  font-size: $icon-size-large;
+}
+
+.icon-small {
+  font-size: $icon-size-small !important;
+}
+
+.button.disabled, .button[disabled] {
+	opacity: 1;
+}
+
+.scroll {
+  text-align: center;
+  width: 100%;
+}
+
+.card .item.item-input textarea {
+	padding-right: 44px;
+}
+
+.polka:nth-child(even) {
+	background-color: #F9F1E5;
+}
+
+.polka:nth-child(odd) {
+	background-color: #FD6279;
+}
