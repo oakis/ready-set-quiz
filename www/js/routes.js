@@ -14,12 +14,12 @@ app.config(function($stateProvider,$urlRouterProvider) {
       }
     }
   })
-  .state('tab.question', {
-    url: '/question',
+  .state('tab.game', {
+    url: '/game',
     views: {
-      'tab-question': {
-        templateUrl: 'templates/question.html',
-        controller: 'QuestionCtrl'
+      'tab-game': {
+        templateUrl: 'templates/game.html',
+        controller: 'GameCtrl'
       }
     }
   })
