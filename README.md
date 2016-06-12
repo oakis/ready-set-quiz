@@ -3,6 +3,8 @@
 This is a school project for the class JavaScript Developer.
 The assignment is to build an app with Ionic.
 
+You must have npm and ionic installed for this to work.
+
 ## Install
 
 ```
