@@ -27,6 +27,7 @@ build/Release
 node_modules
 platforms/
 plugins/
+media/
 
 # Optional npm cache directory
 .npm

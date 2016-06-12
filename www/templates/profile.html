@@ -1,28 +1,43 @@
-<ion-view title="Min Profil" id="profile">
+<ion-view title="Ready Set Quiz" id="profile">
     <ion-nav-buttons side="right">
-      <button class="button icon ion-gear-a" ui-sref="tab.settings"></button>
+      <button class="button icon ion-gear-a button-clear" ui-sref="tab.settings"></button>
     </ion-nav-buttons>
     <ion-content ng-show="loggedIn" class="has-tabs-bottom">
-    <div class="list card">
-    	<div class="item item-avatar">
+    	<div class="item-avatar round-card">
         	<img src="img/profile/default.png">
         	<h2>{{userData.username}}</h2>
-        	<p>Total poäng: {{userData.totalPoints}}</p>
     	</div>
-    	<div class="list card">
-    		<div class="item text-left"><span class="ion-arrow-graph-up-right"></span> Rank: {{rankPercent}}</div>
-            <div class="item text-left"><span class="ion-arrow-graph-up-left"></span> Rank antal rätt: {{rankCorrect}}</div>
-    		<div class="item text-left"><span class="ion-thumbsup"></span> Vinster: {{win}}</div>
-    		<div class="item text-left"><span class="ion-thumbsdown"></span> Förluster: {{loss}}</div>
-    		<div class="item text-left"><span class="ion-bowtie"></span> Oavgjort: {{tied}}</div>
-    		<div class="item text-left"><span class="ion-ios-heart"></span> Bästa kategori: </div>
+    	<div class="round-card">
+            <div class="row">
+                <div class="col col-75 text-left"><span class="ion-checkmark-round padding"></span>Total poäng:</div>
+                <div class="col text-left">{{userData.totalPoints}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-75 text-left"><span class="ion-stats-bars padding"></span>Rank vinstprocent:</div>
+                <div class="col text-left">{{rankPercent}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-75 text-left"><span class="ion-arrow-graph-up-right padding"></span>Rank antal poäng:</div>
+                <div class="col text-left">{{rankCorrect}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-75 text-left"><span class="ion-thumbsup padding"></span>Vinster:</div>
+                <div class="col text-left">{{win}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-75 text-left"><span class="ion-thumbsdown padding"></span>Förluster:</div>
+                <div class="col text-left">{{loss}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-75 text-left"><span class="ion-bowtie padding"></span>Oavgjort:</div>
+                <div class="col text-left">{{tied}}</div>
+            </div>
+            <!--<div class="row">
+                <div class="col col-75 text-left"><span class="ion-ios-heart padding"></span>Bästa kategori: </div>
+                <div class="col text-left"><em></em></div>
+            </div>-->
     	</div>
-        <ion-item>
-            <button class="button button-positive icon icon-left ion-plus-round" ui-sref="tab.addQuestion">Föreslå ny fråga</button>
-        </ion-item>
-        <ion-item ng-if="role === 'admin'">
-            <button class="button button-balanced icon icon-left ion-wrench" ui-sref="tab.admin">Administrera</button>
-        </ion-item>
-    </div>
+        <button class="button button-positive icon icon-left ion-plus-round" ui-sref="tab.addQuestion">Föreslå ny fråga</button>
+        <button class="button button-balanced icon ion-wrench" ui-sref="tab.admin" ng-if="role === 'admin'"></button>
     </ion-content>
 </ion-view>

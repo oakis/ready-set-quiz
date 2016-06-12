@@ -23,8 +23,192 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 /* Eget */
 
-$icon-size-large:									24px;
-$icon-size-small:									12px;
+@font-face {
+  font-family: 'heading';
+  src: url('../fonts/RawengulkSans-094.otf');
+}
+
+@font-face {
+  font-family: 'body';
+  src: url('../fonts/RawengulkSans-094.otf');
+}
+
+// Mixins
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+// Variables
+
+$icon-size-large:			24px;
+$icon-size-small:     12px;
+
+$primary-font:        'body';
+$heading-font:      'heading';
+
+$color-positive:      #6EED70;
+$color-negative:      #FF6969;
+$color-neutral:       #2DC7D3;
+
+$opacity-card:        0.6;
+
+// --------------------------
+
+body {
+  font: 100% $primary-font;
+}
+
+.tabs {
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 0 !important;
+  background-image: none !important;
+}
+
+.tab-item-active {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.button-balanced {
+  background-color: $color-positive !important;
+}
+.button-positive {
+  background-color: $color-neutral;
+}
+.button-positive.activated {
+  background-color: $color-neutral !important;
+}
+.button-assertive {
+  background-color: $color-negative !important;
+}
+
+.pane {
+  background: url('../img/bg3.png') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+}
+
+.card {
+  background-color: rgba(255,255,255,$opacity-card);
+}
+
+.item {
+  background-color: rgba(255,255,255,0);
+  border: 0;
+  p {
+    font-size: 18px;
+  }
+}
+
+.question {
+  margin: 0;
+  height: 135px;
+  button {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+  }
+}
+
+label.item.item-input {
+  background: rgba(255,255,255,0.5);
+  border-radius: 15px;
+}
+
+.bar-seethru {
+  background-color: rgba(255,255,255,$opacity-card);
+  .icon {
+    color: #000;
+  }
+}
+
+.bar-legend {
+  li {
+    padding: 0!important;
+  }
+  .bar-legend-icon {
+    display: none!important;
+  }
+}
+
+.toggle-large.activated {
+  background: transparent!important;
+}
+
+.round-card {
+  background-color: rgba(255,255,255,$opacity-card);
+  @include border-radius(15px);
+  margin: 20px 10px;
+  h2 {
+    display: inline-block;
+  }
+  .item-avatar {
+    img {
+      top: 12.8px;
+      min-width: 50px;
+      max-height: 50px;
+      border-radius: 25%;
+    }
+  }
+  textarea {
+    padding-right: 44px;
+    background: transparent;
+  }
+}
+
+.list label {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.toggle {
+  margin: 0!important;
+  top: 5px!important;
+}
+
+.timer {
+  margin: -15px auto 5px auto;
+  width: 93%;
+}
+
+.svar {
+  background: rgba(51,205,95,0.3)!important;
+}
+
+.alternativ {
+  background: rgba(239,71,58,0.3)!important;
+}
+
+h1,h2,h3,h4,h5,h6,.title,.button,.bar-legend-text {
+  font-family: $heading-font;
+  text-transform: uppercase;
+}
+
+h3:first-child {
+    padding-top: 20px;
+  }
+
+.button {
+  @include border-radius(15px);
+  letter-spacing: 1px;
+  font-size: 20px;
+}
+
+.game-button {
+  min-height: 100px;
+  display: inline-block;
+  margin: 0 2px 2px 2px;
+  max-width: 46%;
+  line-height: normal!important;
+}
+
+// --------------------------
+
+// Icons
 
 .icon-large {
   font-size: $icon-size-large;
@@ -33,6 +217,8 @@ $icon-size-small:									12px;
 .icon-small {
   font-size: $icon-size-small !important;
 }
+
+// Disabled buttons are now not transparent
 
 .button.disabled, .button[disabled] {
 	opacity: 1;
@@ -43,14 +229,25 @@ $icon-size-small:									12px;
   width: 100%;
 }
 
-.card .item.item-input textarea {
-	padding-right: 44px;
+// Bugfixes / Hax
+
+
+.card {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
+// Temporary shit
+
 .polka:nth-child(even) {
-	background-color: #F9F1E5;
+	background-color: #BCEDED;
 }
 
 .polka:nth-child(odd) {
-	background-color: #FD6279;
+	background-color: #B1E1E5;
+}
+
+.polka:last-child {
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
 }

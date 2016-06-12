@@ -1,5 +1,7 @@
 app.controller('HighscoreCtrl', function($scope,$http,$ionicPopup,$state,$localStorage,$timeout){
 
+  Chart.defaults.global.maintainAspectRatio = false;
+
   $scope.$on('$ionicView.beforeEnter', function() {
     $scope.username = $localStorage.username;
     $scope.loggedIn = $localStorage.loggedIn;
@@ -14,6 +16,9 @@ app.controller('HighscoreCtrl', function($scope,$http,$ionicPopup,$state,$localS
     $scope.rankUser = [];
     $scope.rankSum = [];
     $scope.ranktempSum = [];
+  });
+
+  $scope.$on('$ionicView.loaded', function() {
     $timeout(function(){
       $http.get(serverUrl+'/users').then(highscoreSuccess, error);
     },100);
@@ -23,7 +28,7 @@ app.controller('HighscoreCtrl', function($scope,$http,$ionicPopup,$state,$localS
     $timeout(function(){
       $http.get(serverUrl+'/game/getmatches').then(matchSuccess, error);
     },300);
-  })
+  });
 
   $scope.doRefresh = function() {
     $timeout(function(){

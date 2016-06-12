@@ -1,46 +1,47 @@
-<ion-view title="Ready, Set, Quiz" id="question">
+<ion-view title="Ready Set Quiz" id="question">
   <ion-content ng-show="stage1">
-    <ion-refresher pulling-text="Dra ner för att uppdatera..." on-refresh="doRefresh()">
+    <ion-refresher pulling-icon="ion-refresh" on-refresh="doRefresh()">
     </ion-refresher>
-    <ion-item>
-      <button class="button button-positive" ng-click="lfm()">Spela mot slumpvis motståndare <ion-spinner ng-show="stage2"></ion-spinner></button>
-    </ion-item>
-    <div class="card" ng-hide="userMatches.length<=0">
+    <br>
+    <button class="button button-balanced" ng-click="lfm()">Hitta match <ion-spinner ng-show="stage2"></ion-spinner></button>
+    <div class="round-card" ng-hide="userMatches.length<=0">
       <h3>Pågående matcher</h3>
       <ion-item ng-repeat="match in userMatches" class="item-text-wrap">
         <h2>{{match.player1}} vs {{match.player2}}</h2> 
-        <p>{{match.score1}} - {{match.score2}}</p>
-        <button class="button button-balanced" ng-click="start(match._id)" ng-if="!match.player1Played&&match.player1==username||!match.player2Played&&match.player2==username">Spela Match</button>
+        <button class="button button-balanced button-block" ng-click="start(match._id)" ng-if="!match.player1Played&&match.player1==username||!match.player2Played&&match.player2==username">Spela Match</button>
         <p ng-if="match.player1Played&&match.player1==username||match.player2Played&&match.player2==username">Väntar på att motståndaren ska spela.</p>
       </ion-item>
     </div>
-    <div class="card" ng-show="userMatches.length<=0">
+    <div class="round-card" ng-show="userMatches.length<=0">
       <p>Inga matcher startade.</p>
     </div>
-    <div class="card" ng-show="userPlayed.length<=0">
+    <div class="round-card" ng-show="userPlayed.length<=0">
       <p>Inga matcher spelade.</p>
     </div>
-    <div class="card" ng-hide="userPlayed.length<=0">
+    <div class="round-card" ng-hide="userPlayed.length<=0">
       <h3>Avslutade matcher</h3>
-      <ion-item ng-repeat="match in userPlayed | limitTo: 5" class="item-text-wrap">
+      <ion-item ng-repeat="match in userPlayed | orderBy:'dateOfMatch':true | limitTo: 5" class="item-text-wrap item-avatar">
         <img src="img/match/win.png" ng-if="match.winner==username">
-        <img src="img/match/lose.png" ng-if="match.winner!=username&&match.winner!='tie'">
-        <img src="img/match/tie.png" ng-if="match.winner=='tie'">
+        <!--<img src="img/match/lose.png" ng-if="match.winner!=username&&match.winner!='tie'">
+        <img src="img/match/tie.png" ng-if="match.winner=='tie'">-->
         <h2>{{match.player1}} vs {{match.player2}}</h2> 
         <p>{{match.score1}} - {{match.score2}}</p>
       </ion-item>
     </div>
   </ion-content>
   <ion-content ng-show="gameStart">
-    <div class="card">
-      <div class="item item-text-wrap" ng-model="currentQuestion">
-        {{questions[currentQuestion].question}}
+    <div class="round-card">
+      <div class="item item-text-wrap text-left question" ng-model="currentQuestion" ng-hide="userClicked">
+        <p>{{questions[currentQuestion].question}}</p>
+      </div>
+      <div class="item item-text-wrap question" ng-show="userClicked">
+        <button class="round-card button button-balanced" ng-click="next()">Nästa fråga</button>
       </div>
     </div>
+    <progress max="100" value="{{progressval}}" class="timer"></progress>
     <div>
-      <button ng-class="class" ng-repeat="choice in questions[currentQuestion].choices" class="button button-positive button-block" ng-click="answer($index)" ng-disabled="userClicked">{{choice}}</button>
+      <button ng-class="class" ng-repeat="choice in questions[currentQuestion].choices" class="button button-positive col col-50 game-button" ng-click="answer($index)" ng-disabled="userClicked">{{choice}}</button>
     </div>
-    <button class="button button-balanced button-full" ng-click="next()" ng-show="userClicked">Nästa fråga</button>
   </ion-content>
   <ion-content class="row row-center" ng-show="gameOver">
     Du svarade rätt på {{score}} av {{questions.length}} frågor.
@@ -50,7 +51,4 @@
       <div class="item-image">Du har nu totalt {{newScore}} poäng.</div>
     </div>
   </ion-content>
-  <div class="bar bar-footer bar-clear has-tabs" ng-show="gameStart">
-    <progress max="100" value="{{progressval}}"></progress>
-  </div>
 </ion-view>

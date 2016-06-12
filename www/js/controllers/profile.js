@@ -1,5 +1,5 @@
 app.controller('ProfileCtrl', function($scope,$http,$localStorage,$ionicPopup,$state,loadingService,$timeout){
-  
+
   $scope.userData;
   $scope.data = {};
   $scope.$on('$ionicView.beforeEnter', function() {

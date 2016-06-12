@@ -1,27 +1,23 @@
-<ion-view title="Registrering" id="register">
+<ion-view title="Ready Set Quiz" id="register">
   <ion-content>
-    <div class="card">
-    	<div class="list">
-			  <label class="item item-input">
-			    <span class="input-label text-left">Användarnamn</span>
-			    <input type="text" ng-model="username">
-			  </label>
-			  <label class="item item-input">
-			    <span class="input-label text-left">Email</span>
-			    <input type="text" ng-model="email">
-			  </label>
-			  <label class="item item-input">
-			    <span class="input-label text-left">Lösenord</span>
-			    <input type="password" ng-model="password">
-			  </label>
-			  <label class="item item-input">
-			    <span class="input-label text-left">Lösenord (igen)</span>
-			    <input type="password" ng-model="password2">
-			  </label>
-			</div>
-    </div>
-    <div class="padding-horizontal">
-    	<button class="button button-block button-balanced" ng-click="register(username,email,password,password2)">Registrera</button>
-    </div>
+  	<div class="list padding">
+		  <label class="item item-input">
+		    <span class="input-label text-left">Användarnamn</span>
+		    <input type="text" ng-model="username">
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label text-left">Email</span>
+		    <input type="email" ng-model="email">
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label text-left">Lösenord</span>
+		    <input type="password" ng-model="password">
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label text-left">Lösenord (igen)</span>
+		    <input type="password" ng-model="password2">
+		  </label>
+		  <button class="button button-block button-balanced" ng-click="register(username,email,password,password2)">Registrera</button>
+		</div>
   </ion-content>
 </ion-view>

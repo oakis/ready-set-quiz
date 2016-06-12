@@ -26,9 +26,7 @@ app.service('loadingService', function($ionicLoading){
 
 app.service('soundService', function($cordovaNativeAudio){
 	// Setup sounds
-  ionic.Platform.ready(function(){
-    $scope.isWebView = ionic.Platform.isWebView();
-    if (!$scope.isWebView) {
+  $ionicPlatform.ready(function() {
       $cordovaNativeAudio
       .preloadSimple('correct', 'sounds/correct.wav')
       .then(function (msg) {
@@ -43,7 +41,6 @@ app.service('soundService', function($cordovaNativeAudio){
       }, function (error) {
         alert(error);
       });
-    }
   });
 });
 

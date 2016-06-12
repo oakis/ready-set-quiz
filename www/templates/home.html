@@ -1,6 +1,6 @@
-<ion-view title="Ready, Set, Quiz" id="home">
+<ion-view title="Ready Set Quiz" id="home">
   <ion-content>
-    <div class="card" ng-hide="loggedIn">
+    <div class="round-card" ng-hide="loggedIn">
   		<ion-item>
   			<p>Redan användare?</p>
   			<button class="button button-positive" ui-sref="login">Logga in</button>
@@ -10,28 +10,24 @@
   			<button class="button button-assertive" ui-sref="tab.register">Registrera</button>
   		</ion-item>
     </div>
-    <div class="card" ng-show="loggedIn">
-  		<ion-item>
-  			Du är inloggad som användare {{username}}.
-  		</ion-item>
-  		<ion-item>
-  			<button class="button button-assertive" ng-click="logout()">Logga ut</button>
+    <div class="round-card" ng-show="loggedIn">
+  		<ion-item class="item-text-wrap">
+  			<p>Du är inloggad som användare {{username}}.</p>
+        <br>
+        <button class="button button-assertive icon icon-left ion-power" ng-click="logout()">Logga ut</button>
   		</ion-item>
     </div>
-    <div class="card">
+    <div class="round-card">
       <ion-item>
-        <button class="button icon icon-left ion-trophy button-royal" ui-sref="tab.highscore">Highscore</button>
+        <button class="button icon icon-left ion-trophy button-positive" ui-sref="tab.highscore">Highscore</button>
       </ion-item>
     </div>
-    <div class="card">
-      <ion-item>
-        <h2>Statistik</h2><small>(nu med polkasmak)</small>
-        <div class="row polka"></div>
-        <div class="row polka" ng-repeat="item in stats">
+    <div class="round-card">
+        <h3>Statistik</h3>
+        <div class="row polka item" ng-repeat="item in stats">
           <div class="col text-left">{{item.name}}:</div>
           <div class="col text-right">{{item.sum}}</div>
         </div>
-      </ion-item>
     </div>
   </ion-content>
 </ion-view>

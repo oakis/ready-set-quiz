@@ -93,7 +93,7 @@ app.controller('GameCtrl', function($scope,$http,$state,$localStorage,loadingSer
     }
     
     $scope.stopinterval = $interval(function() {
-          $scope.progressval += 1;
+          $scope.progressval += 0.75;
            if( $scope.progressval >= 100 ) {
                  $interval.cancel($scope.stopinterval);
                  $scope.userClicked = true;
@@ -110,12 +110,11 @@ app.controller('GameCtrl', function($scope,$http,$state,$localStorage,loadingSer
 
     if (correct !== userAnswer) {
       this.class = 'button-assertive';
-      if (!$scope.isWebView && $localStorage.sound) { $cordovaNativeAudio.play('wrong'); }
+      if ($localStorage.sound) { $cordovaNativeAudio.play('wrong'); }
     } else {
       this.class = 'button-balanced';
       $scope.score += 1;
-      console.log('Score:',$scope.score)
-      if (!$scope.isWebView && $localStorage.sound) { $cordovaNativeAudio.play('correct'); }
+      if ($localStorage.sound) { $cordovaNativeAudio.play('correct'); }
     }
 
   }

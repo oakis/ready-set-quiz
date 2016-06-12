@@ -24,5 +24,6 @@ var app = angular.module('readySetQuiz', ['ionic','ngStorage','ngCordova','chart
 })
 .config(function($ionicConfigProvider) {
   $ionicConfigProvider.tabs.position('bottom');
-  $ionicConfigProvider.backButton.previousTitleText(false);
+  $ionicConfigProvider.backButton.previousTitleText(false).text('');
+  $ionicConfigProvider.scrolling.jsScrolling(false);
 })

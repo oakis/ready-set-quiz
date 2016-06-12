@@ -1,6 +1,6 @@
-<ion-view title="Administrera" id="admin">
+<ion-view title="Ready Set Quiz" id="admin">
   <ion-content>
-    <div class="card">
+    <div class="round-card">
       <ion-item>
         <h2>Acceptera frågor</h2>
         <ion-item ng-if="notAccepted <= 0">Inga frågor att acceptera.</ion-item>
@@ -30,16 +30,16 @@
   			</div>
       </ion-item>
     </div>
-    <div class="card">
+    <div class="round-card">
       <ion-item>
         <h2>Administrera roller</h2>
         <div class="list" ng-repeat="user in adminRoles">
-          <div class="card">
+          <div class="round-card">
             <ion-item>
               Användarnamn: {{user.username}}
             </ion-item>
             <ion-item>
-              Byt roll: {{user.role}}
+              Byt roll:
               <select ng-model="user.role">
                 <option value="admin">admin</option>
                 <option value="trusted">trusted</option>
