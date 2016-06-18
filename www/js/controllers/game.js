@@ -1,8 +1,55 @@
 app.controller('GameCtrl', function($scope,$http,$state,$localStorage,loadingService,$cordovaNativeAudio,$interval,$timeout){
 
-  
-
   $scope.$on('$ionicView.beforeEnter', function() {
+        // #### ADS START #### //
+    var admobid = {};
+
+    // TODO: replace the following ad units with your own
+    if( /(android)/i.test(navigator.userAgent) ) { 
+      admobid = { // for Android
+        banner: 'ca-app-pub-9499730006251681~9859429457',
+        interstitial: 'ca-app-pub-9499730006251681/7676189052'
+      };
+    } else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {
+      admobid = { // for iOS
+        banner: 'ca-app-pub-9499730006251681~9859429457',
+        interstitial: 'ca-app-pub-9499730006251681/7676189052'
+      };
+    } else {
+      admobid = { // for Windows Phone
+        banner: 'ca-app-pub-9499730006251681~9859429457',
+        interstitial: 'ca-app-pub-9499730006251681/7676189052'
+      };
+    }
+
+    function initApp() {
+      if (! AdMob ) { alert( 'admob plugin not ready' ); return; }
+
+      // this will create a banner on startup
+      /*AdMob.createBanner( {
+        adId: admobid.banner,
+        position: AdMob.AD_POSITION.BOTTOM_CENTER,
+        isTesting: true, // TODO: remove this line when release
+        overlap: false,
+        offsetTopBar: false,
+        bgColor: 'black'
+      } );*/
+
+      // this will load a full screen ad on startup
+      AdMob.prepareInterstitial({
+        adId: admobid.interstitial,
+        isTesting: true, // TODO: remove this line when release
+        autoShow: false
+      });
+    }
+
+    if(( /(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent) )) {
+        document.addEventListener('deviceready', initApp, false);
+    } else {
+        initApp();
+    }
+
+    // #### ADS END #### //
     $scope.questions = [];
     $scope.currentQuestion = 0;
     $scope.user = {};
@@ -129,6 +176,8 @@ app.controller('GameCtrl', function($scope,$http,$state,$localStorage,loadingSer
       $http.post(serverUrl+'/game/savescore/', { gameId: $scope.currentGame, username: $scope.username, score: $scope.score })
       $scope.gameOver = true;
       $scope.gameStart = false;
+      // show the interstitial later, e.g. at end of game level
+      if (window.AdMob) AdMob.showInterstitial();
     }
   }
 

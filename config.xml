@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.oakis.readysetquiz" version="0.0.8" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.oakis.readysetquiz" version="0.0.9" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>Ready Set Quiz</name>
   <description>
         Detta är mitt projekt i kursen Apputveckling med HTML5. Utbildningen heter Javascriptutvecklare och är på Jensen YH.
@@ -12,6 +12,7 @@
   <access origin="*"/>
   <allow-navigation href="*"/>
   <allow-intent href="*"/>
+  <framework src="com.google.android.gms:play-services-ads:+" />
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>

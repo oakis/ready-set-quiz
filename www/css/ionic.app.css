@@ -9963,12 +9963,22 @@ h3:first-child {
   letter-spacing: 1px;
   font-size: 20px; }
 
+.game-box {
+  margin: 0px 10px; }
+
 .game-button {
-  min-height: 100px;
-  display: inline-block;
-  margin: 0 2px 2px 2px;
-  max-width: 46%;
-  line-height: normal !important; }
+  min-height: 68px;
+  display: block;
+  margin: 0 0 5px 0 !important;
+  line-height: normal !important;
+  letter-spacing: 2px;
+  font-size: 15px; }
+
+.games-played p:first-child {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  text-align: center; }
 
 .icon-large {
   font-size: 24px; }

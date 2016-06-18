@@ -18,10 +18,12 @@
     <div class="round-card" ng-show="userPlayed.length<=0">
       <p>Inga matcher spelade.</p>
     </div>
-    <div class="round-card" ng-hide="userPlayed.length<=0">
+    <div class="round-card games-played" ng-hide="userPlayed.length<=0">
       <h3>Avslutade matcher</h3>
       <ion-item ng-repeat="match in userPlayed | orderBy:'dateOfMatch':true | limitTo: 5" class="item-text-wrap item-avatar">
         <img src="img/match/win.png" ng-if="match.winner==username">
+        <p ng-if="match.winner!=username&&match.winner!='tie'">Förlust</p>
+        <p ng-if="match.winner=='tie'">Oavgjord</p>
         <!--<img src="img/match/lose.png" ng-if="match.winner!=username&&match.winner!='tie'">
         <img src="img/match/tie.png" ng-if="match.winner=='tie'">-->
         <h2>{{match.player1}} vs {{match.player2}}</h2> 
@@ -35,12 +37,12 @@
         <p>{{questions[currentQuestion].question}}</p>
       </div>
       <div class="item item-text-wrap question" ng-show="userClicked">
-        <button class="round-card button button-balanced" ng-click="next()">Nästa fråga</button>
+        <button class="round-card button button-balanced icon icon-right ion-chevron-right" ng-click="next()">Nästa fråga</button>
       </div>
     </div>
     <progress max="100" value="{{progressval}}" class="timer"></progress>
-    <div>
-      <button ng-class="class" ng-repeat="choice in questions[currentQuestion].choices" class="button button-positive col col-50 game-button" ng-click="answer($index)" ng-disabled="userClicked">{{choice}}</button>
+    <div class="game-box">
+      <button ng-class="class" ng-repeat="choice in questions[currentQuestion].choices" class="button button-positive button-block game-button" ng-click="answer($index)" ng-disabled="userClicked">{{choice}}</button>
     </div>
   </ion-content>
   <ion-content class="row row-center" ng-show="gameOver">
